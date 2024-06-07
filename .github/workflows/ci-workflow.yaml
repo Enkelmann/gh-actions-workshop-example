@@ -12,7 +12,7 @@ jobs:
       - name: check out repository
         uses: actions/checkout@v4
       - name: Set up node
-        uses: actions/custom-npm-setup-action@v1
+        uses: ./.github/actions/custom-npm-action.yaml
         with:
           node-version: 20
       - run: npm run prettier
@@ -51,7 +51,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Set up node
-        uses: actions/custom-npm-setup-action@v1
+        uses: ./.github/actions/custom-npm-action.yaml
         with:
           node-version: 20
       - name: Install Playwright Browsers
