@@ -1,10 +1,10 @@
-name: CI Demo
+name: CD demo
 
-run-name: ${{ github.actor }} is testing out CI
+run-name: ${{ github.actor }} is testing out CD
 on: [push, workflow_dispatch]
 
 jobs:
-  ci-workflow:
+  cd-workflow:
     runs-on: ubuntu-latest
     steps:
       - name: check out repository
@@ -18,3 +18,7 @@ jobs:
       - run: npm run typecheck
       - run: npm run test
       - run: npm run build
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist/'
