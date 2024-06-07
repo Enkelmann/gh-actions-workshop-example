@@ -11,11 +11,10 @@ jobs:
     steps:
       - name: check out repository
         uses: actions/checkout@v4
-      - name: setup node
-        uses: actions/setup-node@v4
+      - name: Set up node
+        uses: actions/custom-npm-setup-action@v1
         with:
-          node-version: '20'
-      - run: npm ci
+          node-version: 20
       - run: npm run prettier
       - run: npm run typecheck
       - run: npm run test
@@ -51,12 +50,10 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
-      - name: Set up node 20
-        uses: actions/setup-node@v4
+      - name: Set up node
+        uses: actions/custom-npm-setup-action@v1
         with:
           node-version: 20
-      - name: Install dependencies
-        run: npm ci
       - name: Install Playwright Browsers
         run:
           npx playwright install ${{ matrix.browser }}

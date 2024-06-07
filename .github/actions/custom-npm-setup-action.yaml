@@ -1,0 +1,16 @@
+name: 'npm-Setup action'
+description: 'setup npm'
+inputs:
+  node-version:  # id of input
+    description: 'Node version'
+    required: true
+    default: 20
+runs:
+  using: "composite"
+  steps:
+    - name: Set up node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+    - name: Install dependencies
+      run: npm ci
